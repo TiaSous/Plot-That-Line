@@ -1,0 +1,10 @@
+C:\Users\pd51pyb\Documents\GitHub\Plot-That-Line\App-Graphique\App-Graphique\bin\Debug\App-Graphique.exe.config
+C:\Users\pd51pyb\Documents\GitHub\Plot-That-Line\App-Graphique\App-Graphique\bin\Debug\App-Graphique.exe
+C:\Users\pd51pyb\Documents\GitHub\Plot-That-Line\App-Graphique\App-Graphique\bin\Debug\App-Graphique.pdb
+C:\Users\pd51pyb\Documents\GitHub\Plot-That-Line\App-Graphique\App-Graphique\obj\Debug\App-Graphique.csproj.AssemblyReference.cache
+C:\Users\pd51pyb\Documents\GitHub\Plot-That-Line\App-Graphique\App-Graphique\obj\Debug\App_Graphique.Form1.resources
+C:\Users\pd51pyb\Documents\GitHub\Plot-That-Line\App-Graphique\App-Graphique\obj\Debug\App_Graphique.Properties.Resources.resources
+C:\Users\pd51pyb\Documents\GitHub\Plot-That-Line\App-Graphique\App-Graphique\obj\Debug\App-Graphique.csproj.GenerateResource.cache
+C:\Users\pd51pyb\Documents\GitHub\Plot-That-Line\App-Graphique\App-Graphique\obj\Debug\App-Graphique.csproj.CoreCompileInputs.cache
+C:\Users\pd51pyb\Documents\GitHub\Plot-That-Line\App-Graphique\App-Graphique\obj\Debug\App-Graphique.exe
+C:\Users\pd51pyb\Documents\GitHub\Plot-That-Line\App-Graphique\App-Graphique\obj\Debug\App-Graphique.pdb
