@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\pd51pyb\\Documents\\GitHub\\Plot-That-Line\\App-Graphique\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{11BF9C0D-6E35-4844-A890-E79CEFE0D814}|App-Graphique\\App-Graphique.csproj|c:\\users\\pd51pyb\\documents\\github\\plot-that-line\\app-graphique\\app-graphique\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{11BF9C0D-6E35-4844-A890-E79CEFE0D814}|App-Graphique\\App-Graphique.csproj|C:\\Users\\pd51pyb\\Documents\\GitHub\\Plot-That-Line\\App-Graphique\\app-graphique\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11BF9C0D-6E35-4844-A890-E79CEFE0D814}|App-Graphique\\App-Graphique.csproj|solutionrelative:app-graphique\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,8 +11,8 @@
       "RelativeMoniker": "D:0:0:{11BF9C0D-6E35-4844-A890-E79CEFE0D814}|App-Graphique\\App-Graphique.csproj|solutionrelative:app-graphique\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11BF9C0D-6E35-4844-A890-E79CEFE0D814}|App-Graphique\\App-Graphique.csproj|c:\\users\\pd51pyb\\documents\\github\\plot-that-line\\app-graphique\\app-graphique\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11BF9C0D-6E35-4844-A890-E79CEFE0D814}|App-Graphique\\App-Graphique.csproj|solutionrelative:app-graphique\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11BF9C0D-6E35-4844-A890-E79CEFE0D814}|App-Graphique\\App-Graphique.csproj|c:\\users\\pd51pyb\\documents\\github\\plot-that-line\\app-graphique\\app-graphique\\datachess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11BF9C0D-6E35-4844-A890-E79CEFE0D814}|App-Graphique\\App-Graphique.csproj|solutionrelative:app-graphique\\datachess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,12 +27,12 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Data.cs",
-              "DocumentMoniker": "C:\\Users\\pd51pyb\\Documents\\GitHub\\Plot-That-Line\\App-Graphique\\App-Graphique\\Data.cs",
-              "RelativeDocumentMoniker": "App-Graphique\\Data.cs",
-              "ToolTip": "C:\\Users\\pd51pyb\\Documents\\GitHub\\Plot-That-Line\\App-Graphique\\App-Graphique\\Data.cs",
-              "RelativeToolTip": "App-Graphique\\Data.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAZAAAA",
+              "Title": "DataChess.cs",
+              "DocumentMoniker": "C:\\Users\\pd51pyb\\Documents\\GitHub\\Plot-That-Line\\App-Graphique\\App-Graphique\\DataChess.cs",
+              "RelativeDocumentMoniker": "App-Graphique\\DataChess.cs",
+              "ToolTip": "C:\\Users\\pd51pyb\\Documents\\GitHub\\Plot-That-Line\\App-Graphique\\App-Graphique\\DataChess.cs",
+              "RelativeToolTip": "App-Graphique\\DataChess.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-30T14:03:17.765Z",
               "EditorCaption": ""
@@ -45,7 +45,7 @@
               "RelativeDocumentMoniker": "App-Graphique\\Form1.cs",
               "ToolTip": "C:\\Users\\pd51pyb\\Documents\\GitHub\\Plot-That-Line\\App-Graphique\\App-Graphique\\Form1.cs",
               "RelativeToolTip": "App-Graphique\\Form1.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAA4AAAAFAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-30T13:48:11.498Z",
               "EditorCaption": ""

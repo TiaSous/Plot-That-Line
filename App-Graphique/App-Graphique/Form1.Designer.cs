@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.Graphique = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.Graphique)).BeginInit();
@@ -42,14 +41,9 @@
             this.Graphique.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.Graphique.Legends.Add(legend1);
-            this.Graphique.Location = new System.Drawing.Point(107, 77);
+            this.Graphique.Location = new System.Drawing.Point(20, 12);
             this.Graphique.Name = "Graphique";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "Magnus Carlsen";
-            this.Graphique.Series.Add(series1);
-            this.Graphique.Size = new System.Drawing.Size(476, 263);
+            this.Graphique.Size = new System.Drawing.Size(751, 426);
             this.Graphique.TabIndex = 0;
             this.Graphique.Text = "chart1";
             title1.Name = "Elo\'s chess player";
