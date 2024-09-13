@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using ScottPlot;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,11 +18,14 @@ namespace Graphique
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<DataChess> dataChesss;
         public MainWindow()
         {
             InitializeComponent();
 
             List<DataChess> field = ReadCSV();
+            dataChesss = field;
+
             field.GroupBy(x => x.Name).ToList().ForEach(x =>
             {
                 double[] dataX = new double[x.Count()];
@@ -33,9 +37,13 @@ namespace Graphique
                     dataY[i] = x.ElementAt(i).Elo;
                 }
                 GrapheData.Plot.Add.Scatter(dataX, dataY);
+                GrapheData.Plot.Add.Scatter(dataX, dataY).LegendText = x.Key;
                 GrapheData.Plot.Axes.AutoScale();
+                
+                
             });
-            GrapheData.Refresh();   
+            GrapheData.Plot.ShowLegend();
+            GrapheData.Refresh();
         }
 
         private List<DataChess> ReadCSV()
