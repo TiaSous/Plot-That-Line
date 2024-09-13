@@ -12,10 +12,6 @@
             <ColumnDefinition Width="auto" MinWidth="1248"></ColumnDefinition>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="13*"></RowDefinition>
-            <RowDefinition Height="6*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <ScottPlot:WpfPlot x:Name="GrapheData"  />
+        <ScottPlot:WpfPlot x:Name="GrapheData" Margin="0,0,0,91"  />
     </Grid>
 </Window>

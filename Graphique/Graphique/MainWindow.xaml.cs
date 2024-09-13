@@ -40,7 +40,9 @@ namespace Graphique
                 GrapheData.Plot.Add.Scatter(dataX, dataY).LegendText = x.Key;
                 GrapheData.Plot.Axes.AutoScale();
             });
-            GrapheData.Plot.ShowLegend();
+            GrapheData.Plot.Legend.Orientation = ScottPlot.Orientation.Horizontal;
+            GrapheData.Plot.ShowLegend(Edge.Bottom);
+            
             GrapheData.Refresh();
         }
 
