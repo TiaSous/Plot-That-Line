@@ -39,8 +39,6 @@ namespace Graphique
                 GrapheData.Plot.Add.Scatter(dataX, dataY);
                 GrapheData.Plot.Add.Scatter(dataX, dataY).LegendText = x.Key;
                 GrapheData.Plot.Axes.AutoScale();
-                
-                
             });
             GrapheData.Plot.ShowLegend();
             GrapheData.Refresh();
