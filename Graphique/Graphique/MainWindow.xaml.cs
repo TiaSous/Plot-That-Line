@@ -39,6 +39,10 @@ namespace Graphique
                 GrapheData.Plot.Add.Scatter(dataX, dataY);
                 GrapheData.Plot.Add.Scatter(dataX, dataY).LegendText = x.Key;
                 GrapheData.Plot.Axes.AutoScale();
+
+                CheckBox checkBox = new CheckBox { Content = x.Key};
+
+                ListBoxPlayer.Items.Add(checkBox);
             });
             GrapheData.Plot.Legend.Orientation = ScottPlot.Orientation.Horizontal;
             GrapheData.Plot.ShowLegend(Edge.Bottom);
