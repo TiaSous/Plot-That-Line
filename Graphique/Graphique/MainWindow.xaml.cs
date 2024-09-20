@@ -1,5 +1,7 @@
-﻿using ScottPlot;
+﻿using Microsoft.VisualBasic;
+using ScottPlot;
 using System.IO;
+using System.Numerics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,36 +20,27 @@ namespace Graphique
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<DataChess> dataChesss;
+        List<DataChess> dataChess;
         public MainWindow()
         {
             InitializeComponent();
 
             List<DataChess> field = ReadCSV();
-            dataChesss = field;
+            dataChess = field;
 
             field.GroupBy(x => x.Name).ToList().ForEach(x =>
             {
-                double[] dataX = new double[x.Count()];
-                double[] dataY = new double[x.Count()];
-
-                for (int i = 0; i < x.Count(); i++)
-                {
-                    dataX[i] = x.ElementAt(i).Year;
-                    dataY[i] = x.ElementAt(i).Elo;
-                }
-                GrapheData.Plot.Add.Scatter(dataX, dataY);
-                GrapheData.Plot.Add.Scatter(dataX, dataY).LegendText = x.Key;
-                GrapheData.Plot.Axes.AutoScale();
-
-                CheckBox checkBox = new CheckBox { Content = x.Key};
-
+                CheckBox checkBox = new CheckBox { Content = x.Key };
+                checkBox.Checked += CheckBoxPlayer_Checked;
+                checkBox.Unchecked += CheckBoxPlayer_Unchecked;
                 ListBoxPlayer.Items.Add(checkBox);
+                GrapheData.Plot.Axes.AutoScale();
             });
+
             GrapheData.Plot.Legend.Orientation = ScottPlot.Orientation.Horizontal;
             GrapheData.Plot.ShowLegend(Edge.Bottom);
-            
             GrapheData.Refresh();
+
         }
 
         private List<DataChess> ReadCSV()
@@ -70,6 +63,46 @@ namespace Graphique
             });
 
             return data_chess;
+        }
+
+        private void CheckBoxPlayer_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckBox name = sender as CheckBox;
+            CreateScatter(name.Content.ToString());
+        }
+        private void CheckBoxPlayer_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CheckBox name = sender as CheckBox;
+            RemoveScatter(name.Content.ToString());
+        }
+
+        private void CreateScatter(string name)
+        {
+            var player = dataChess.Where(x => x.Name == name).GroupBy(x => x.Name).ToList();
+
+            double[] dataX = new double[player[0].Count()];
+            double[] dataY = new double[player[0].Count()];
+
+
+            for (int i = 0; i < player[0].Count(); i++)
+            {
+                dataX[i] = player[0].ElementAt(i).Year;
+                dataY[i] = player[0].ElementAt(i).Elo;
+            }
+            GrapheData.Plot.Add.Scatter(dataX, dataY);
+            GrapheData.Plot.Add.Scatter(dataX, dataY).LegendText = player.First().Key;
+            GrapheData.Plot.Axes.AutoScale();
+            GrapheData.Refresh();
+        }
+
+        private void RemoveScatter(string name)
+        {
+            var plottables = GrapheData.Plot.GetPlottables().ToList();
+            int index = plottables.FindIndex(x => x.LegendItems.FirstOrDefault()?.Label == name);
+
+            GrapheData.Plot.Remove(plottables[index - 1]);
+            GrapheData.Plot.Remove(plottables[index]);
+            GrapheData.Refresh();
         }
     }
 }
