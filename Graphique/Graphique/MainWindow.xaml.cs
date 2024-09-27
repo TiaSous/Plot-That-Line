@@ -21,15 +21,17 @@ namespace Graphique
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<DataChess> dataChess;
-        int minYear = 0;
-        int maxYear = 2021;
-        List<string> playerShow = new List<string>();
+        
+        List<DataChess> dataChess;                          // liste de données
+        int minYear = 0;                                    // année minimum par défaut
+        int maxYear = 9999;                                 // année maximum par défaut
+        List<string> playerShow = new List<string>();       // les joueurs qui sont acctuellement affichées
+
         public MainWindow()
         {
             InitializeComponent();
 
-            List<DataChess> field = ReadCSV();
+            List<DataChess> field = ReadCSV("Chess.csv");
             dataChess = field;
 
             field.GroupBy(x => x.Name).ToList().ForEach(x =>
@@ -47,9 +49,9 @@ namespace Graphique
 
         }
 
-        private List<DataChess> ReadCSV()
+        private List<DataChess> ReadCSV(string file)
         {
-            List<string> csv = File.ReadAllLines("Chess.csv").Skip(1).ToList();
+            List<string> csv = File.ReadAllLines(file).Skip(1).ToList();
 
             List<DataChess> data_chess = new List<DataChess>();
 
@@ -72,19 +74,23 @@ namespace Graphique
         private void CheckBoxPlayer_Checked(object sender, RoutedEventArgs e)
         {
             CheckBox name = sender as CheckBox;
-            CreateScatter(name.Content.ToString());
+            var(x, y) = GetDataForAPlayer(name.Content.ToString(), dataChess);
+            GrapheData.Plot.Add.Scatter(x, y);
+            GrapheData.Plot.Add.Scatter(x, y).LegendText = name.Content.ToString();
+            GrapheData.Plot.Axes.AutoScale();
+            GrapheData.Refresh();
             playerShow.Add(name.Content.ToString());
         }
         private void CheckBoxPlayer_Unchecked(object sender, RoutedEventArgs e)
         {
             CheckBox name = sender as CheckBox;
-            RemoveScatter(name.Content.ToString());
+            RemoveScatter(name.Content.ToString(), GrapheData);
             playerShow.Remove(name.Content.ToString());
         }
 
-        private void CreateScatter(string name)
+        private (List<double> dataX, List<double> dataY) GetDataForAPlayer(string name, List<DataChess> dataChesses)
         {
-            var player = dataChess.Where(x => x.Name == name).GroupBy(x => x.Name).ToList();
+            var player = dataChesses.Where(x => x.Name == name).GroupBy(x => x.Name).ToList();
 
             List<double> dataX = new List<double>();
             List<double> dataY = new List<double>();
@@ -97,22 +103,20 @@ namespace Graphique
                     dataY.Add(player[0].ElementAt(i).Elo);
                 }
             }
-            GrapheData.Plot.Add.Scatter(dataX, dataY);
-            GrapheData.Plot.Add.Scatter(dataX, dataY).LegendText = player.First().Key;
-            GrapheData.Plot.Axes.AutoScale();
-            GrapheData.Refresh();
+
+            return (dataX, dataY);
         }
 
-        private void RemoveScatter(string name)
+        private void RemoveScatter(string name, ScottPlot.WPF.WpfPlot data)
         {
-            var plottables = GrapheData.Plot.GetPlottables().ToList();
+            var plottables = data.Plot.GetPlottables().ToList();
 
             // aidé par chatgpt
             int index = plottables.FindIndex(x => x.LegendItems.FirstOrDefault().Label == name);
 
-            GrapheData.Plot.Remove(plottables[index - 1]);
-            GrapheData.Plot.Remove(plottables[index]);
-            GrapheData.Refresh();
+            data.Plot.Remove(plottables[index - 1]);
+            data.Plot.Remove(plottables[index]);
+            data.Refresh();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -120,7 +124,16 @@ namespace Graphique
             minYear = Convert.ToInt32(start_date.Text);
             maxYear = Convert.ToInt32(finish_date.Text);
             GrapheData.Plot.Clear();
-            playerShow.ForEach(x => CreateScatter(x));
+            playerShow.ForEach(name => {
+                var(x, y) = GetDataForAPlayer(name, dataChess);
+
+                GrapheData.Plot.Add.Scatter(x, y);
+                GrapheData.Plot.Add.Scatter(x, y).LegendText = name;
+            });
+
+            
+            GrapheData.Plot.Axes.AutoScale();
+            GrapheData.Refresh();
         }
     }
 }
