@@ -2,6 +2,7 @@
 using ScottPlot;
 using System.IO;
 using System.Numerics;
+using System.Reflection.Emit;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +22,9 @@ namespace Graphique
     public partial class MainWindow : Window
     {
         List<DataChess> dataChess;
+        int minYear = 0;
+        int maxYear = 2021;
+        List<string> playerShow = new List<string>();
         public MainWindow()
         {
             InitializeComponent();
@@ -69,25 +73,29 @@ namespace Graphique
         {
             CheckBox name = sender as CheckBox;
             CreateScatter(name.Content.ToString());
+            playerShow.Add(name.Content.ToString());
         }
         private void CheckBoxPlayer_Unchecked(object sender, RoutedEventArgs e)
         {
             CheckBox name = sender as CheckBox;
             RemoveScatter(name.Content.ToString());
+            playerShow.Remove(name.Content.ToString());
         }
 
         private void CreateScatter(string name)
         {
             var player = dataChess.Where(x => x.Name == name).GroupBy(x => x.Name).ToList();
 
-            double[] dataX = new double[player[0].Count()];
-            double[] dataY = new double[player[0].Count()];
-
+            List<double> dataX = new List<double>();
+            List<double> dataY = new List<double>();
 
             for (int i = 0; i < player[0].Count(); i++)
             {
-                dataX[i] = player[0].ElementAt(i).Year;
-                dataY[i] = player[0].ElementAt(i).Elo;
+                if(player[0].ElementAt(i).Year >= minYear && player[0].ElementAt(i).Year <= maxYear)
+                {
+                    dataX.Add(player[0].ElementAt(i).Year);
+                    dataY.Add(player[0].ElementAt(i).Elo);
+                }
             }
             GrapheData.Plot.Add.Scatter(dataX, dataY);
             GrapheData.Plot.Add.Scatter(dataX, dataY).LegendText = player.First().Key;
@@ -98,11 +106,21 @@ namespace Graphique
         private void RemoveScatter(string name)
         {
             var plottables = GrapheData.Plot.GetPlottables().ToList();
-            int index = plottables.FindIndex(x => x.LegendItems.FirstOrDefault()?.Label == name);
+
+            // aidé par chatgpt
+            int index = plottables.FindIndex(x => x.LegendItems.FirstOrDefault().Label == name);
 
             GrapheData.Plot.Remove(plottables[index - 1]);
             GrapheData.Plot.Remove(plottables[index]);
             GrapheData.Refresh();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            minYear = Convert.ToInt32(start_date.Text);
+            maxYear = Convert.ToInt32(finish_date.Text);
+            GrapheData.Plot.Clear();
+            playerShow.ForEach(x => CreateScatter(x));
         }
     }
 }
