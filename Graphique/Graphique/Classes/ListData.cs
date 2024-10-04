@@ -17,11 +17,13 @@ namespace Graphique.Classes
         public List<string> NameOfPlayer { get => nameOfPlayer; set => nameOfPlayer = value; }
         public List<int> ListIdPlayer { get => listIdPlayer; set => listIdPlayer = value; }
 
+        // ajoute le joueur dans la liste des joueurs afficher
         public void AddPlayer(int idPlayer)
         {
             ListIdPlayer.Add(idPlayer);
         }
 
+        // récupère les x et y d'un joueur
         public LineData GetLineData(int idPlayer, int minYear = 0, int maxYear = 9999)
         {
             LineData lineData = new LineData();
@@ -40,11 +42,13 @@ namespace Graphique.Classes
             return lineData;
         }
 
+        // Récupère l'index d'un joueur selon son nom
         public int GetIndex(string player)
         {
             return data.Where(line => line.Name.Equals(player)).First().Id_player;
         }
 
+        // retourne le nom du joueur selon sont id
         public string GetName(int playerId)
         {
             return data.Where(line => line.Id_player.Equals(playerId)).First().Name;
@@ -68,6 +72,7 @@ namespace Graphique.Classes
                     NameOfPlayer.Add(values[1]);
                     chess_player.Id_player = NameOfPlayer.Count - 1;
                 }
+                // TODO: faire en sorte qu'ilrécupère les valeurs dynamiquement
                 chess_player.Name = values[1];
                 chess_player.Elo = Convert.ToInt32(values[2]);
                 chess_player.Year = Convert.ToInt32(values[3]);
