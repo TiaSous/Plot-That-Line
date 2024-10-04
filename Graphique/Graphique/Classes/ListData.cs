@@ -62,6 +62,7 @@ namespace Graphique.Classes
             // met les données dans un bon format
             csv.ForEach(c =>
             {
+                // TODO : régler problème si , quelque part
                 string[] values = c.Split(',');
                 DataChess chess_player = new DataChess();
                 if (NameOfPlayer.Contains(values[1]))

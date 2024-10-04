@@ -25,7 +25,7 @@ namespace Graphique
     {
         ListData list = new ListData();
 
-        int maxYear = 0;
+        int maxYear = 9999;
         int minYear = 0;
 
 
@@ -60,7 +60,7 @@ namespace Graphique
             LineData dataXY = new LineData();
 
             // récupère les données XY de la personnes
-            dataXY = list.GetLineData(Convert.ToInt32(name.Tag));
+            dataXY = list.GetLineData(Convert.ToInt32(name.Tag), minYear, maxYear);
 
             // va ajouter le joueur sur le graphique
             GrapheData.Plot.Add.Scatter(dataXY.X, dataXY.Y);
@@ -97,23 +97,38 @@ namespace Graphique
         // Lorsqu'il filtre par la date
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            minYear = Convert.ToInt32(start_date.Text);
-            maxYear = Convert.ToInt32(finish_date.Text);
-            GrapheData.Plot.Clear();
-
-            list.ListIdPlayer.ForEach(x =>
+            try   
             {
-                LineData dataXY = new LineData();
 
-                dataXY = list.GetLineData(x, minYear, maxYear);
+                minYear = Convert.ToInt32(start_date.Text);
+                maxYear = Convert.ToInt32(finish_date.Text);
 
-                // va ajouter le joueur sur le graphique
-                GrapheData.Plot.Add.Scatter(dataXY.X, dataXY.Y);
-                GrapheData.Plot.Add.Scatter(dataXY.X, dataXY.Y).LegendText = list.GetName(x);
-            });
+                if (minYear >= maxYear)
+                {
+                    MessageBox.Show("Min year greater than min year", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                GrapheData.Plot.Clear();
 
-            GrapheData.Plot.Axes.AutoScale();
-            GrapheData.Refresh();
+                list.ListIdPlayer.ForEach(x =>
+                {
+                    LineData dataXY = new LineData();
+
+                    dataXY = list.GetLineData(x, minYear, maxYear);
+
+                    // va ajouter le joueur sur le graphique
+                    GrapheData.Plot.Add.Scatter(dataXY.X, dataXY.Y);
+                    GrapheData.Plot.Add.Scatter(dataXY.X, dataXY.Y).LegendText = list.GetName(x);
+                });
+
+                GrapheData.Plot.Axes.AutoScale();
+                GrapheData.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Invalid input in box", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
         }
     }
 }
