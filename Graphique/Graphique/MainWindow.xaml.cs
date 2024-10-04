@@ -37,9 +37,9 @@ namespace Graphique
             list.Init("Chess.csv");
 
             // crée les checkbox
-            list.ListIdPlayer.ForEach(x =>
+            list.NameOfPlayer.ForEach(x =>
             {
-                CheckBox checkBox = new CheckBox { Content = list.GetName(x), Tag = x };
+                CheckBox checkBox = new CheckBox { Content = x, Tag = list.GetIndex(x) };
                 checkBox.Checked += CheckBoxPlayer_Checked;
                 checkBox.Unchecked += CheckBoxPlayer_Unchecked;
                 ListBoxPlayer.Items.Add(checkBox);

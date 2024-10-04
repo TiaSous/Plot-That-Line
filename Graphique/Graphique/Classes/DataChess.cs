@@ -12,12 +12,10 @@ namespace Graphique.Classes
         private string name;
         private int elo;
         private int year;
-        private int age;
 
         public string Name { get => name; set => name = value; }
         public int Elo { get => elo; set => elo = value; }
         public int Year { get => year; set => year = value; }
-        public int Age { get => age; set => age = value; }
         public int Id_player { get => id_player; set => id_player = value; }
     }
 }

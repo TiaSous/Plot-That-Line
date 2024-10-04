@@ -56,6 +56,7 @@ namespace Graphique.Classes
 
         public void Init(string source)
         {
+            string[] element = File.ReadLines(source).First().Split(',');
             List<string> csv = File.ReadAllLines(source).Skip(1).ToList();
 
             // met les données dans un bon format
@@ -72,11 +73,10 @@ namespace Graphique.Classes
                     NameOfPlayer.Add(values[1]);
                     chess_player.Id_player = NameOfPlayer.Count - 1;
                 }
-                // TODO: faire en sorte qu'ilrécupère les valeurs dynamiquement
-                chess_player.Name = values[1];
-                chess_player.Elo = Convert.ToInt32(values[2]);
-                chess_player.Year = Convert.ToInt32(values[3]);
-                chess_player.Age = Convert.ToInt32(values[4]);
+                // TODO: faire en sorte qu'il récupère les valeurs dynamiquement
+                chess_player.Name = values[Array.IndexOf(element, "Name")];
+                chess_player.Elo = Convert.ToInt32(values[Array.IndexOf(element, "ELO")]);
+                chess_player.Year = Convert.ToInt32(values[Array.IndexOf(element, "Date")]);
 
                 data.Add(chess_player);
             });
