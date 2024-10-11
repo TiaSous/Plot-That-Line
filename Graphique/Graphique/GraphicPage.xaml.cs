@@ -111,7 +111,7 @@ namespace Graphique
 
                 if (minYear >= maxYear)
                 {
-                    MessageBox.Show("Min year greater than min year", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Min year greater than max year", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 GrapheData.Plot.Clear();

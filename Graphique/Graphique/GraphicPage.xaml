@@ -24,7 +24,7 @@
             <Label Grid.Row="1" Content="Finish Year"  FontSize="20" HorizontalContentAlignment="Right" Margin="0,0,60,0"/>
             <TextBox x:Name="start_date" Grid.Row="1" Height="50" Width="100" FontSize="20" HorizontalAlignment="Left" Margin="60,0,0,0"/>
             <TextBox x:Name="finish_date" Grid.Row="1" Height="50" Width="100" FontSize="20" HorizontalAlignment="Right" Margin="0,0,60,0"/>
-            <Button Grid.Row="1" Width="100" Height="100" Content="Ok" Click="Button_Click" />
+            <Button Grid.Row="1" Width="100" Height="100" Content="validation" Click="Button_Click" />
         </Grid>
     </Grid>
 </Window>
