@@ -23,18 +23,24 @@ namespace Graphique
     /// </summary>
     public partial class MainWindow : Window
     {
-        ListData list = new ListData();
+        DataPoints list = new DataPoints();
 
         int maxYear = 9999;
         int minYear = 0;
 
 
-        public MainWindow(string Filename = "Chess.csv")
+        public MainWindow(string filename)
         {
             InitializeComponent();
 
+            if (filename == null)
+            {
+                filename = "Chess.csv";
+            }
+
+
             // lit le fichier csv
-            list.Init(Filename);
+            list.Init(filename);
 
             // crée les checkbox
             list.NameOfPlayer.ForEach(x =>
@@ -57,7 +63,7 @@ namespace Graphique
         private void CheckBoxPlayer_Checked(object sender, RoutedEventArgs e)
         {
             CheckBox name = sender as CheckBox;
-            LineData dataXY = new LineData();
+            Classes.Point dataXY = new Classes.Point();
 
             // récupère les données XY de la personnes
             dataXY = list.GetLineData(Convert.ToInt32(name.Tag), minYear, maxYear);
@@ -82,7 +88,7 @@ namespace Graphique
             // réaffiche les autres qui sont cochées
             list.ListIdPlayer.ForEach(x =>
             {
-                LineData dataXY = new LineData();
+                Classes.Point dataXY = new Classes.Point();
 
                 dataXY = list.GetLineData(x);
 
@@ -112,7 +118,7 @@ namespace Graphique
 
                 list.ListIdPlayer.ForEach(x =>
                 {
-                    LineData dataXY = new LineData();
+                    Classes.Point dataXY = new Classes.Point();
 
                     dataXY = list.GetLineData(x, minYear, maxYear);
 

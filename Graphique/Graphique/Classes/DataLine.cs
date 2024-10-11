@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Graphique.Classes
 {
-    internal class DataChess
+    internal class DataLine
     {
         private int id_player;
         private string name;

@@ -8,10 +8,10 @@ using Graphique.Intrerfaces;
 
 namespace Graphique.Classes
 {
-    internal class ListData : PlotData
+    internal class DataPoints : IDataPoints
     {
         private List<int> listIdPlayer = new List<int>();
-        private List<DataChess> data = new List<DataChess>();
+        private List<DataLine> data = new List<DataLine>();
         private List<string> nameOfPlayer = new List<string>();
 
         public List<string> NameOfPlayer { get => nameOfPlayer; set => nameOfPlayer = value; }
@@ -24,9 +24,9 @@ namespace Graphique.Classes
         }
 
         // récupère les x et y d'un joueur
-        public LineData GetLineData(int idPlayer, int minYear = 0, int maxYear = 9999)
+        public Point GetLineData(int idPlayer, int minYear = 0, int maxYear = 9999)
         {
-            LineData lineData = new LineData();
+            Point lineData = new Point();
             var player = data.Where(line => line.Id_player == idPlayer).GroupBy(x => x.Name).ToList();
 
 
@@ -64,7 +64,7 @@ namespace Graphique.Classes
             {
                 // TODO : régler problème si , quelque part
                 string[] values = c.Split(',');
-                DataChess chess_player = new DataChess();
+                DataLine chess_player = new DataLine();
                 if (NameOfPlayer.Contains(values[1]))
                 {
                     chess_player.Id_player = NameOfPlayer.IndexOf(values[1]);

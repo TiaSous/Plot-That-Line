@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Graphique.Intrerfaces
 {
-    internal interface PlotData
+    internal interface IDataPoints
     {
         void Init(string source);
         void AddPlayer(int idPlayer);
         void RemovePlayer(int idPlayer);
-        LineData GetLineData(int idPlayer, int minYear, int maxYear);
+        Point GetLineData(int idPlayer, int minYear, int maxYear);
         int GetIndex(string player);
         public string GetName(int playerId);
     }
