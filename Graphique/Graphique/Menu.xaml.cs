@@ -21,6 +21,7 @@ namespace Graphique
     public partial class Menu : Window
     {
         string name;
+
         public Menu()
         {
             InitializeComponent();
@@ -34,14 +35,12 @@ namespace Graphique
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            // Create OpenFileDialog 
+            // Fais par copilot
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
 
-            // Set filter for file extension and default file extension 
             dlg.DefaultExt = ".csv";
             dlg.Filter = "CSV files (*.csv)|*.csv";
 
-            // Display OpenFileDialog by calling ShowDialog method 
             dlg.ShowDialog();
             name = dlg.FileName;
         }

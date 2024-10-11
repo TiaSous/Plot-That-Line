@@ -56,14 +56,14 @@ namespace Graphique.Classes
 
         public void Init(string source)
         {
-            string[] element = File.ReadLines(source).First().Split(',');
+            string[] element = File.ReadLines(source).First().Split(';');
             List<string> csv = File.ReadAllLines(source).Skip(1).ToList();
 
             // met les données dans un bon format
             csv.ForEach(c =>
             {
                 // TODO : régler problème si , quelque part
-                string[] values = c.Split(',');
+                string[] values = c.Split(';');
                 DataLine chess_player = new DataLine();
                 if (NameOfPlayer.Contains(values[1]))
                 {
@@ -74,7 +74,7 @@ namespace Graphique.Classes
                     NameOfPlayer.Add(values[1]);
                     chess_player.Id_player = NameOfPlayer.Count - 1;
                 }
-                // TODO: faire en sorte qu'il récupère les valeurs dynamiquement
+
                 chess_player.Name = values[Array.IndexOf(element, "Name")];
                 chess_player.Elo = Convert.ToInt32(values[Array.IndexOf(element, "ELO")]);
                 chess_player.Year = Convert.ToInt32(values[Array.IndexOf(element, "Date")]);
