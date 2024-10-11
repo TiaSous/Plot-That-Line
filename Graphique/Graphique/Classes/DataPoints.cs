@@ -62,7 +62,7 @@ namespace Graphique.Classes
             // met les données dans un bon format
             csv.ForEach(c =>
             {
-                // TODO : régler problème si , quelque part
+                // TODO : régler problème si "," quelque part
                 string[] values = c.Split(';');
                 DataLine chess_player = new DataLine();
                 if (NameOfPlayer.Contains(values[1]))
