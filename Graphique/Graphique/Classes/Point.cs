@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Graphique.Classes
 {
-    internal class Point
+    public class Point
     {
         private List<double> _x = new List<double>();
         private List<double> _y = new List<double>();

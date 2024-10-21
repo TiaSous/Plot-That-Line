@@ -8,7 +8,7 @@ using Graphique.Intrerfaces;
 
 namespace Graphique.Classes
 {
-    internal class DataPoints : IDataPoints
+    public class DataPoints : IDataPoints
     {
         private List<int> listIdPlayer = new List<int>();
         private List<DataLine> data = new List<DataLine>();
@@ -62,7 +62,6 @@ namespace Graphique.Classes
             // met les données dans un bon format
             csv.ForEach(c =>
             {
-                // TODO : régler problème si "," quelque part
                 string[] values = c.Split(';');
                 DataLine chess_player = new DataLine();
                 if (NameOfPlayer.Contains(values[1]))

@@ -29,18 +29,11 @@ namespace Graphique
         int minYear = 0;
 
 
-        public MainWindow(string filename)
+        public MainWindow(DataPoints file)
         {
             InitializeComponent();
 
-            if (filename == null)
-            {
-                filename = "Chess.csv";
-            }
-
-
-            // lit le fichier csv
-            list.Init(filename);
+            list = file;
 
             // crée les checkbox
             list.NameOfPlayer.ForEach(x =>
