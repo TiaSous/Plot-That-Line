@@ -29,7 +29,7 @@ namespace Graphique
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ImportData(object sender, RoutedEventArgs e)
         {
             if(dataPoints == null)
             {
@@ -42,7 +42,7 @@ namespace Graphique
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void ShowGraphic(object sender, RoutedEventArgs e)
         {
             // Fais par copilot
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();

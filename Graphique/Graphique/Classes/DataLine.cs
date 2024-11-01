@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Graphique.Classes
 {
+    // représente une ligne dans le csv
     internal class DataLine
     {
-        private int id_player;
+        private int id_player; // va être générer 
         private string name;
         private int elo;
         private int year;

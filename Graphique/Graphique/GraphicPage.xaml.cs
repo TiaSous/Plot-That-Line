@@ -36,9 +36,9 @@ namespace Graphique
             list = file;
 
             // crée les checkbox
-            list.NameOfPlayer.ForEach(x =>
+            list.NameOfPlayer.ForEach(name =>
             {
-                CheckBox checkBox = new CheckBox { Content = x, Tag = list.GetIndex(x) };
+                CheckBox checkBox = new CheckBox { Content = name, Tag = list.GetIndex(name) };
                 checkBox.Checked += CheckBoxPlayer_Checked;
                 checkBox.Unchecked += CheckBoxPlayer_Unchecked;
                 ListBoxPlayer.Items.Add(checkBox);
@@ -79,15 +79,15 @@ namespace Graphique
             list.RemovePlayer(Convert.ToInt32(name.Tag));
 
             // réaffiche les autres qui sont cochées
-            list.ListIdPlayer.ForEach(x =>
+            list.ListIdPlayer.ForEach(idPlayer =>
             {
                 Classes.Point dataXY = new Classes.Point();
 
-                dataXY = list.GetLineData(x);
+                dataXY = list.GetLineData(idPlayer);
 
                 // va ajouter le joueur sur le graphique
                 GrapheData.Plot.Add.Scatter(dataXY.X, dataXY.Y);
-                GrapheData.Plot.Add.Scatter(dataXY.X, dataXY.Y).LegendText = list.GetName(x);
+                GrapheData.Plot.Add.Scatter(dataXY.X, dataXY.Y).LegendText = list.GetName(idPlayer);
             });
             GrapheData.Plot.Axes.AutoScale();
             GrapheData.Refresh();
@@ -109,15 +109,15 @@ namespace Graphique
                 }
                 GrapheData.Plot.Clear();
 
-                list.ListIdPlayer.ForEach(x =>
+                list.ListIdPlayer.ForEach(idPlayer =>
                 {
                     Classes.Point dataXY = new Classes.Point();
 
-                    dataXY = list.GetLineData(x, minYear, maxYear);
+                    dataXY = list.GetLineData(idPlayer, minYear, maxYear);
 
                     // va ajouter le joueur sur le graphique
                     GrapheData.Plot.Add.Scatter(dataXY.X, dataXY.Y);
-                    GrapheData.Plot.Add.Scatter(dataXY.X, dataXY.Y).LegendText = list.GetName(x);
+                    GrapheData.Plot.Add.Scatter(dataXY.X, dataXY.Y).LegendText = list.GetName(idPlayer);
                 });
 
                 GrapheData.Plot.Axes.AutoScale();

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Menu" Height="450" Width="800">
     <Grid>
-        <Button Height="20" Width="100" Content="Show Graphique" Click="Button_Click" />
-        <Button Height="20" Width="100" Content="Import Data"  Margin="0,100,0,0" Click="Button_Click_1"/>
+        <Button Height="20" Width="100" Content="Show Graphique" Click="ImportData" />
+        <Button Height="20" Width="100" Content="Import Data"  Margin="0,100,0,0" Click="ShowGraphic"/>
     </Grid>
 </Window>

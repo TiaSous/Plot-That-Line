@@ -9,6 +9,7 @@ namespace Graphique.Intrerfaces
 {
     internal interface IDataPoints
     {
+        // lis le csv
         void Init(string source);
         void AddPlayer(int idPlayer);
         void RemovePlayer(int idPlayer);

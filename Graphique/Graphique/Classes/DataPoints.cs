@@ -54,6 +54,7 @@ namespace Graphique.Classes
             return data.Where(line => line.Id_player.Equals(playerId)).First().Name;
         }
 
+        // lorsqu'il crée la classe va gére le csv
         public void Init(string source)
         {
             string[] element = File.ReadLines(source).First().Split(';');
@@ -82,6 +83,7 @@ namespace Graphique.Classes
             });
         }
 
+        // retirer le joueur de la liste
         public void RemovePlayer(int idPlayer)
         {
             ListIdPlayer.Remove(idPlayer);
